@@ -3,3 +3,6 @@ __pycache__
 
 # Python virtual environment directories
 .venv
+
+# VSCode dir
+.vscode

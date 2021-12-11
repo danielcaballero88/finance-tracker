@@ -10,6 +10,9 @@ services:
       - "8000:8000"
     networks:
       - ft-network
+    depends_on:
+      - ft-mongodb
+
   ft-front:
     build: ./front
     volumes:
@@ -20,6 +23,21 @@ services:
     networks:
       - ft-network
 
+  ft-mongodb:
+    image: mongo:5.0
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+      - MONGO_INITDB_ROOT_DATABASE=admin
+    volumes:
+      - ft-vol-mongodb:/data/db
+    networks:
+      - ft-network
+
+volumes:
+  ft-vol-mongodb:
 networks:
   ft-network:
     name: ft-network

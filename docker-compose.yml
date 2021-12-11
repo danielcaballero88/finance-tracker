@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  ft-api:
+    build: ./api
+    volumes:
+      - ./api/src:/usr/local/api
+    command: uvicorn main:app --host 0.0.0.0 --reload
+    ports:
+      - "8000:8000"
+    networks:
+      - ft-network
+  ft-front:
+    build: ./front
+    volumes:
+      - ./front:/usr/local/front
+    command: ng serve --host 0.0.0.0
+    ports:
+      - "4200:4200"
+    networks:
+      - ft-network
+
+networks:
+  ft-network:
+    name: ft-network
+    driver: bridge

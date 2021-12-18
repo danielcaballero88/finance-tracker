@@ -4,7 +4,7 @@ services:
   api:
     build: ./api
     volumes:
-      - ft-vol-api:/usr/local/api
+      - ./api/src:/usr/local/api
     command: uvicorn main:app --host 0.0.0.0 --reload
     ports:
       - "8000:8000"

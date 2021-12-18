@@ -15,13 +15,15 @@ ENV PYTHONUNBUFFERED=1
 COPY requirements.txt .
 RUN python -m pip install -r requirements.txt
 
-WORKDIR /app
-COPY ./src /app
+# The WORKDIR is where the code is copied over (according to the
+# following COPY command) and where the app runs inside the container.
+WORKDIR /usr/local/api
+COPY ./src /usr/local/api
 
 # Creates a non-root user with an explicit UID and adds permission to access the
-# /app folder. For more info, please refer to:
+# /usr/local/api folder. For more info, please refer to:
 # https://aka.ms/vscode-docker-python-configure-containers
-RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
+RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /usr/local/api
 USER appuser
 
 # Command to run. The host is directed to "0.0.0.0" to make it accessible from

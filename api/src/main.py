@@ -1,6 +1,8 @@
-from fastapi import FastAPI
+import fastapi as fa
 
-app = FastAPI()
+
+app = fa.FastAPI()
+
 
 @app.get("/")
 async def read_root():

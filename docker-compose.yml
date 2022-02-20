@@ -6,8 +6,13 @@ services:
     volumes:
       - ./api/src:/usr/local/api
     command: uvicorn main:app --host 0.0.0.0 --reload
+    environment:
+      MONGO_HOST: ft-mongodb
+      MONGO_USER: admin
+      MONGO_PASS: admin
     ports:
       - "8000:8000"
+      - "4444:4444"  # rpdb
     networks:
       - ft-network
     depends_on:

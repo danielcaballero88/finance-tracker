@@ -1,0 +1,15 @@
+FT Release v0.0.1:
+- Project Start.
+- First API implementation.
+
+FT Release v0.0.2:
+- Dockerize the API.
+- First Frontend implementation dockerized.
+- First docker-compose file.
+
+FT Release v0.0.3 (WIP):
+
+API:
+- Add mongodb service to docker-compose.
+- Make api dev env responsive to code changes.
+- Add user authentication (register and login).

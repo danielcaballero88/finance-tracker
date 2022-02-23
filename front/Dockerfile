@@ -1,10 +1,10 @@
 FROM docker.io/library/node:16.13.1
 
+
+WORKDIR /usr/local/front
+COPY ./ /usr/local/front
+
 RUN npm install -g @angular/cli @angular-devkit/build-angular
-
-WORKDIR /app
-COPY . .
-
 RUN npm install
 
 CMD ng serve --host 0.0.0.0

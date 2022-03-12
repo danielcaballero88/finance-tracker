@@ -1,7 +1,7 @@
 version: '3.9'
 
 services:
-  api:
+  ft_api:
     build: ./api
     volumes:
       - ./api/src:/usr/local/api
@@ -16,8 +16,8 @@ services:
     networks:
       - ft-network
     depends_on:
-      - mongodb
-  front:
+      - ft_mongodb
+  ft_front:
     build: ./front
     volumes:
       - ft-vol-front:/usr/local/front
@@ -26,7 +26,7 @@ services:
       - "4200:4200"
     networks:
       - ft-network
-  mongodb:
+  ft_mongodb:
     image: mongo:5.0
     ports:
       - "27017:27017"

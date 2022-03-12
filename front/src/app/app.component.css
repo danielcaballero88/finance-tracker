@@ -1,0 +1,14 @@
+.main {
+  padding: 1px;
+  color: rgb(32, 32, 32);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.content {
+  margin-top: 40px;
+}

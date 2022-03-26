@@ -1,0 +1,28 @@
+.navbar-main {
+    background-color: gray;
+    color: antiquewhite;
+    font-size: 12px;
+    font-family: sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    background-color: rgb(32, 32, 32);
+    border-right: 1px solid rgb(223, 223, 223);
+    font-size: 20px;
+    padding: 5px;
+}
+
+li.left {
+    float: left;
+}
+
+li.right {
+    float: right;
+}

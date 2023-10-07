@@ -28,14 +28,13 @@ def register_new_user(new_user: u.UserRegister):
     disabled = False
     hashed_password = p.get_password_hash(password)
 
-    # Assemble new user dictionary and convert to pydantic object.
-    new_user_dict = {
-        "username": username,
-        "email": email,
-        "disabled": disabled,
-        "hashed_password": hashed_password,
-    }
-    new_user_db = u.UserDB(**new_user_dict)
+    # New UserDB Pydantic object.
+    new_user_db = u.UserDB(
+        username=username,
+        email=email,
+        disabled=disabled,
+        hashed_password=hashed_password,
+    )
 
     # Add to the DB.
     result = new_user_db.add()

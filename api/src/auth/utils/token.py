@@ -1,7 +1,7 @@
 """Token utility module."""
 
 import datetime as dt
-from typing import Optional, TypedDict
+from typing import Optional, TypedDict, cast
 
 import fastapi as fa
 import jose
@@ -45,9 +45,13 @@ def create_access_token(
     """Creates a new access token."""
     expire = dt.datetime.utcnow() + (expires_delta or DEFAULT_EXPIRES_DELTA)
 
-    to_encode: TokenCreateDict = {"sub": username, "exp": expire}
+    to_encode = TokenCreateDict(sub=username, exp=expire)
 
-    encoded_jwt: str = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    encoded_jwt: str = jwt.encode(
+        cast(dict, to_encode),
+        SECRET_KEY,
+        algorithm=ALGORITHM,
+    )
 
     token = Token(token_type="bearer", token=encoded_jwt, expiration=expire)
 
